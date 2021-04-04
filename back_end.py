@@ -48,7 +48,7 @@ nameList = ["Purdue", "Northwestern", "UIUC", "IU", "Wisconsin", "Michigan", "Mi
 schoolList = []
 
 
-#make sure the numbers are styled to be
+#make sure the numbers are using the general style without commas
 
 for i in range(14):
     #to get CSV row subtract three from row number in sheets
