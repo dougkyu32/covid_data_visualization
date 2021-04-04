@@ -1,7 +1,7 @@
 # testing importing data using a CSV file
 import pandas as pd
 
-CSVfile = pd.read_csv(r'C:\Users\isaac\Desktop\testMultiples.csv')
+CSVfile = pd.read_csv('https://docs.google.com/spreadsheets/d/1LFbQ4c64YoRfpRhSXPihPnMzPJ4v3SjFUB-tx5XgRjs/export?gid=0&format=csv')
 
 #value = CSVfile._get_value(14, 'Purdue')
 #value += 1
@@ -49,13 +49,14 @@ schoolList = []
 
 
 #make sure the numbers are using the general style without commas
+#change range for both loops back to 14 when all the school data has been entered
 
-for i in range(14):
+for i in range(12):
     #to get CSV row subtract three from row number in sheets
     tempSchool = School(nameList[i], int(CSVfile._get_value(13, nameList[i])), int(CSVfile._get_value(14, nameList[i])))
     schoolList.append(tempSchool)
 
-for i in range(14):
+for i in range(12):
     print(schoolList[i].name)
     print(schoolList[i].totalTests)
     print(schoolList[i].totalCases)
