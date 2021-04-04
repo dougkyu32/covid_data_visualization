@@ -52,8 +52,8 @@ schoolList = []
 #change range for both loops back to 14 when all the school data has been entered
 
 for i in range(12):
-    #to get CSV row subtract three from row number in sheets
-    tempSchool = School(nameList[i], int(CSVfile._get_value(13, nameList[i])), int(CSVfile._get_value(14, nameList[i])))
+    #to get CSV row subtract two from row number in sheets
+    tempSchool = School(nameList[i], int(CSVfile._get_value(14, nameList[i])), int(CSVfile._get_value(15, nameList[i])))
     schoolList.append(tempSchool)
 
 for i in range(12):
