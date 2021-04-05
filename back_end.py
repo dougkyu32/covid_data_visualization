@@ -1,5 +1,6 @@
 # testing importing data using a CSV file
 import pandas as pd
+import numpy as np
 
 CSVfile = pd.read_csv('https://docs.google.com/spreadsheets/d/1LFbQ4c64YoRfpRhSXPihPnMzPJ4v3SjFUB-tx5XgRjs/export?gid=0&format=csv')
 
@@ -9,6 +10,15 @@ CSVfile = pd.read_csv('https://docs.google.com/spreadsheets/d/1LFbQ4c64YoRfpRhSX
 
 # end of testing for CSV file
 
+#data should be a 2 row matrix
+#Converts 2 row matrix to dictionary
+def TwoLineCSVtoDict(data):
+  dataT = np.transpose(data)
+  cases_dict = {}
+  for i in range(len(dataT)):
+    for j in range(2):
+      cases_dict[dataT[i][0]] = dataT[i][j]
+  return cases_dict
 
 class School:
     def __init__(self, name, totalTests, totalCases):
