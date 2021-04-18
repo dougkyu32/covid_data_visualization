@@ -2,7 +2,7 @@
 import pandas as pd
 import numpy as np
 
-CSVfile = pd.read_csv('https://docs.google.com/spreadsheets/d/1LFbQ4c64YoRfpRhSXPihPnMzPJ4v3SjFUB-tx5XgRjs/export?gid=0&format=csv')
+CSVfile = pd.read_csv('https://docs.google.com/spreadsheets/d/1LFbQ4c64YoRfpRhSXPihPnMzPJ4v3SjFUB-tx5XgRjs/export?gid=1898114679&format=csv')
 
 #value = CSVfile._get_value(14, 'Purdue')
 #value += 1
@@ -33,6 +33,7 @@ class School:
         self.totalStudentTests = 0
         self.totalStudentCases = 0
         self.totalFacultyTests = 0
+        self.positivityRate = 0
         self.totalFacultyCases = 0
         self.dateOfReopening = ""
         self.universityVaccinationRate = 0
@@ -41,12 +42,18 @@ class School:
         self.surveillanceTestingPercent = 0
         self.universityPopulation = 0
         self.classEventCapacity = 0
-        self.county = ""
+        self.countyName = ""
         self.countyPopulation = 0
         self.countyTotal = 0
         self.countyDeaths = 0
         self.countyTotalPositiveCases = 0
         self.state = ""
+        self.statePopulation = ""
+        self.stateDeaths = ""
+        self.stateTotalPositiveCases = ""
+        self.statePositivityRate = ""
+        self.stateDeathRate = ""
+        self.stateDeathToPositiveCases = ""
         self.fullyVaccinatedRate = 0
 
 
@@ -61,14 +68,49 @@ schoolList = []
 #make sure the numbers are using the general style without commas
 #change range for both loops back to 14 when all the school data has been entered
 
-for i in range(12):
+for i in range(14):
     #to get CSV row subtract two from row number in sheets
-    tempSchool = School(nameList[i], int(CSVfile._get_value(14, nameList[i])), int(CSVfile._get_value(15, nameList[i])))
+    tempSchool = School(nameList[i], int(CSVfile._get_value(1, nameList[i])), int(CSVfile._get_value(2, nameList[i])))
+
+    for j in range(15):
+        index = j + 3
+        if index == 3:
+            tempSchool.positivityRate = CSVfile._get_value(index, nameList[i])
+        if index == 4:
+            tempSchool.dateOfReopening = CSVfile._get_value(index, nameList[i])
+        if index == 5:
+            tempSchool.universityPopulation = CSVfile._get_value(index, nameList[i])
+        if index == 6:
+            tempSchool.countyName = CSVfile._get_value(index, nameList[i])
+        if index == 7:
+            tempSchool.countyPopulation = CSVfile._get_value(index, nameList[i])
+        if index == 8:
+            tempSchool.countyDeaths = CSVfile._get_value(index, nameList[i])
+        if index == 9:
+            tempSchool.countyTotalPositiveCases = CSVfile._get_value(index, nameList[i])
+        if index == 10:
+            tempSchool.state = CSVfile._get_value(index, nameList[i])
+        if index == 11:
+            tempSchool.fullyVaccinatedRate = CSVfile._get_value(index, nameList[i])
+        if index == 12:
+            tempSchool.statePopulation = CSVfile._get_value(index, nameList[i])
+        if index == 13:
+            tempSchool.stateDeaths = CSVfile._get_value(index, nameList[i])
+        if index == 14:
+            tempSchool.stateTotalPositiveCases = CSVfile._get_value(index, nameList[i])
+        if index == 15:
+            tempSchool.statePositivityRate = CSVfile._get_value(index, nameList[i])
+        if index == 16:
+            tempSchool.stateDeathRate = CSVfile._get_value(index, nameList[i])
+        if index == 17:
+            tempSchool.stateDeathToPositiveCases = CSVfile._get_value(index, nameList[i])
+
     schoolList.append(tempSchool)
 
-for i in range(12):
+
+for i in range(14):
     print(schoolList[i].name)
     print(schoolList[i].totalTests)
     print(schoolList[i].totalCases)
-
-
+    print(schoolList[i].positivityRate)
+    print(schoolList[i].stateDeathToPositiveCases)
